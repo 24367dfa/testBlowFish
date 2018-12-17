@@ -12,7 +12,7 @@ int main(int argc, const char **argv)
   int keybytes = static_cast<int>(keystr.size());
   bfc->Initialize(key, keybytes);
 
-  unsigned long bfBufSize = bfc->GetOutputLength(original.size());
+  unsigned long bfBufSize = bfc->GetOutputLength(original.size()+1);
   unsigned char *bfBuf = new unsigned char[bfBufSize];
   std::fill(bfBuf, bfBuf + bfBufSize, 0);
   original.copy(reinterpret_cast<char *>(bfBuf), original.size());
