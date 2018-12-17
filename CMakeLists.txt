@@ -8,8 +8,3 @@ add_executable(testBlowFish
     blowfish.h
     blowfish.h2
     blowfish.cpp)
-
-target_include_directories(testBlowFish
-    PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-)
