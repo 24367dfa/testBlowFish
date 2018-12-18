@@ -33,14 +33,22 @@ void CBlowFish::Blowfish_encipher (DWORD *xl, DWORD *xr)
 	Xr.dword = *xr ;
 
 	Xl.dword ^= PArray [0];
-	ROUND (Xr, Xl, 1) ;  ROUND (Xl, Xr, 2) ;
-	ROUND (Xr, Xl, 3) ;  ROUND (Xl, Xr, 4) ;
-	ROUND (Xr, Xl, 5) ;  ROUND (Xl, Xr, 6) ;
-	ROUND (Xr, Xl, 7) ;  ROUND (Xl, Xr, 8) ;
-	ROUND (Xr, Xl, 9) ;  ROUND (Xl, Xr, 10) ;
-	ROUND (Xr, Xl, 11) ; ROUND (Xl, Xr, 12) ;
-	ROUND (Xr, Xl, 13) ; ROUND (Xl, Xr, 14) ;
-	ROUND (Xr, Xl, 15) ; ROUND (Xl, Xr, 16) ;
+	ROUND (Xr, Xl, 1);
+	ROUND (Xl, Xr, 2);
+	ROUND (Xr, Xl, 3);
+	ROUND (Xl, Xr, 4);
+	ROUND (Xr, Xl, 5);
+	ROUND (Xl, Xr, 6);
+	ROUND (Xr, Xl, 7);
+	ROUND (Xl, Xr, 8);
+	ROUND (Xr, Xl, 9);
+	ROUND (Xl, Xr, 10);
+	ROUND (Xr, Xl, 11);
+	ROUND (Xl, Xr, 12);
+	ROUND (Xr, Xl, 13);
+	ROUND (Xl, Xr, 14);
+	ROUND (Xr, Xl, 15);
+	ROUND (Xl, Xr, 16);
 	Xr.dword ^= PArray [17] ;
 
 	*xr = Xl.dword ;
@@ -57,14 +65,22 @@ void CBlowFish::Blowfish_decipher (DWORD *xl, DWORD *xr)
    Xr.dword = *xr ;
 
    Xl.dword ^= PArray [17] ;
-   ROUND (Xr, Xl, 16) ;  ROUND (Xl, Xr, 15) ;
-   ROUND (Xr, Xl, 14) ;  ROUND (Xl, Xr, 13) ;
-   ROUND (Xr, Xl, 12) ;  ROUND (Xl, Xr, 11) ;
-   ROUND (Xr, Xl, 10) ;  ROUND (Xl, Xr, 9) ;
-   ROUND (Xr, Xl, 8) ;   ROUND (Xl, Xr, 7) ;
-   ROUND (Xr, Xl, 6) ;   ROUND (Xl, Xr, 5) ;
-   ROUND (Xr, Xl, 4) ;   ROUND (Xl, Xr, 3) ;
-   ROUND (Xr, Xl, 2) ;   ROUND (Xl, Xr, 1) ;
+   ROUND (Xr, Xl, 16);
+   ROUND (Xl, Xr, 15);
+   ROUND (Xr, Xl, 14);
+   ROUND (Xl, Xr, 13);
+   ROUND (Xr, Xl, 12);
+   ROUND (Xl, Xr, 11);
+   ROUND (Xr, Xl, 10);
+   ROUND (Xl, Xr, 9);
+   ROUND (Xr, Xl, 8);
+   ROUND (Xl, Xr, 7);
+   ROUND (Xr, Xl, 6);
+   ROUND (Xl, Xr, 5);
+   ROUND (Xr, Xl, 4);
+   ROUND (Xl, Xr, 3);
+   ROUND (Xr, Xl, 2);
+   ROUND (Xl, Xr, 1);
    Xr.dword ^= PArray[0];
 
    *xl = Xr.dword;
