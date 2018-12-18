@@ -8,3 +8,7 @@ add_executable(testBlowFish
     blowfish.h
     blowfish.h2
     blowfish.cpp)
+
+set_target_properties(testBlowFish PROPERTIES
+	CXX_STANDARD_REQUIRED	11
+)
