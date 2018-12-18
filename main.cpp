@@ -7,6 +7,10 @@ int main(int argc, const char **argv)
   std::string keystr = "deadbeefdeadbeef";
   std::string original = "deadbeefdeadbeef";
 
+  std::cout << "DWORD: " << sizeof(DWORD) << ", unsigned long: " << sizeof(unsigned long) << std::endl;
+  std::cout << "WORD: " << sizeof(WORD) << ", unsigned short: " << sizeof(unsigned short) << std::endl;
+  std::cout << "BYTE: " << sizeof(BYTE) << ", unsigned char: " << sizeof(unsigned char) << std::endl;
+
   CBlowFish *bfc = new CBlowFish();
   unsigned char *key = (unsigned char *)keystr.c_str();
   int keybytes = static_cast<int>(keystr.size());
