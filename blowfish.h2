@@ -267,4 +267,3 @@ static DWORD bf_S[4][256] = {
 };
 
 
-

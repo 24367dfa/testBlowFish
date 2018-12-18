@@ -129,8 +129,7 @@ DWORD CBlowFish::GetOutputLength (DWORD lInputLong)
 {
 	DWORD 	lVal ;
 
-	lVal = lInputLong % 8 ;	// find out if uneven number of bytes at
-the end
+	lVal = lInputLong % 8 ;	// find out if uneven number of bytes at the end
 	if (lVal != 0)
 		return lInputLong + 8 - lVal ;
 	else
@@ -138,10 +137,8 @@ the end
 }
 
 	// Encode pIntput into pOutput.  Input length in lSize.  Returned value
-	// is length of output which will be even MOD 8 bytes.  Input
-buffer and
-	// output buffer can be the same, but be sure buffer length is even MOD
-8.
+	// is length of output which will be even MOD 8 bytes.  Input buffer and
+	// output buffer can be the same, but be sure buffer length is even MOD 8.
 DWORD CBlowFish::Encode (BYTE * pInput, BYTE * pOutput, DWORD lSize)
 {
 	DWORD 	lCount, lOutSize, lGoodBytes ;
@@ -152,23 +149,17 @@ DWORD CBlowFish::Encode (BYTE * pInput, BYTE * pOutput, DWORD lSize)
 	lOutSize = GetOutputLength (lSize) ;
 	for (lCount = 0 ; lCount < lOutSize ; lCount += 8)
 	{
-		if (SameDest)	// if encoded data is being written into input
-buffer
+		if (SameDest)	// if encoded data is being written into input buffer
 		{
-		 	if (lCount < lSize - 7)	// if not dealing with uneven
-bytes at end
+		 	if (lCount < lSize - 7)	// if not dealing with uneven bytes at end
 		 	{
 		 	 	Blowfish_encipher ((DWORD *) pInput,
 		 	 		(DWORD *) (pInput + 4)) ;
 		 	}
-		 	else		// pad end of data with null bytes to
-complete encryption
+		 	else		// pad end of data with null bytes to complete encryption
 		 	{
-				po = pInput + lSize ;	// point at byte
-past the
-end of actual data
-				j = (int) (lOutSize - lSize) ;	// number of
-bytes to set to null
+				po = pInput + lSize ;	// point at byte past the end of actual data
+				j = (int) (lOutSize - lSize) ;	// number of bytes to set to null
 				for (i = 0 ; i < j ; i++)
 					*po++ = 0 ;
 		 	 	Blowfish_encipher ((DWORD *) pInput,
@@ -176,26 +167,21 @@ bytes to set to null
 		 	}
 		 	pInput += 8 ;
 		}
-		else 			// output buffer not equal to input
-buffer, so must copy
+		else 			// output buffer not equal to input buffer, so must copy
 		{               // input to output buffer prior to encrypting
-		 	if (lCount < lSize - 7)	// if not dealing with uneven
-bytes at end
+		 	if (lCount < lSize - 7)	// if not dealing with uneven bytes at end
 		 	{
 		 		pi = pInput ;
 		 		po = pOutput ;
 		 		for (i = 0 ; i < 8 ; i++)
 // copy bytes to output
 		 			*po++ = *pi++ ;
-		 	 	Blowfish_encipher ((DWORD *) pOutput,	// now
-encrypt them
+		 	 	Blowfish_encipher ((DWORD *) pOutput,	// now encrypt them
 		 	 		(DWORD *) (pOutput + 4)) ;
 		 	}
-		 	else		// pad end of data with null bytes to
-complete encryption
+		 	else		// pad end of data with null bytes to complete encryption
 		 	{
-		 		lGoodBytes = lSize - lCount ;	// number of
-remaining data bytes
+		 		lGoodBytes = lSize - lCount ;	// number of remaining data bytes
 		 		po = pOutput ;
 		 		for (i = 0 ; i < (int) lGoodBytes ; i++)
 		 			*po++ = *pInput++ ;
@@ -211,10 +197,8 @@ remaining data bytes
 	return lOutSize ;
  }
 
-	// Decode pIntput into pOutput.  Input length in lSize.  Input
-buffer and
-	// output buffer can be the same, but be sure buffer length is even MOD
-8.
+	// Decode pIntput into pOutput.  Input length in lSize.  Input buffer and
+	// output buffer can be the same, but be sure buffer length is even MOD 8.
 void CBlowFish::Decode (BYTE * pInput, BYTE * pOutput, DWORD lSize)
 {
 	DWORD 	lCount ;
@@ -224,15 +208,13 @@ void CBlowFish::Decode (BYTE * pInput, BYTE * pOutput, DWORD lSize)
 
 	for (lCount = 0 ; lCount < lSize ; lCount += 8)
 	{
-		if (SameDest)	// if encoded data is being written into input
-buffer
+		if (SameDest)	// if encoded data is being written into input buffer
 		{
 	 	 	Blowfish_decipher ((DWORD *) pInput,
 	 	 		(DWORD *) (pInput + 4)) ;
 		 	pInput += 8 ;
 		}
-		else 			// output buffer not equal to input
-buffer
+		else 			// output buffer not equal to input buffer
 		{               // so copy input to output before decoding
 	 		pi = pInput ;
 	 		po = pOutput ;
@@ -247,4 +229,3 @@ buffer
 }
 
 
-
