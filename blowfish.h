@@ -4,12 +4,14 @@
 // Revised code--3/20/94
 // Converted to C++ class 5/96, Jim Conger
 
+#include <cstdint>
+
 #define MAXKEYBYTES 	56		// 448 bits max
 #define NPASS           16		// SBox passes
 
-#define DWORD  		unsigned long
-#define WORD  		unsigned short
-#define BYTE  		unsigned char
+#define DWORD  		uint32_t
+#define WORD  		uint16_t
+#define BYTE  		uint8_t
 
 class CBlowFish
 {
